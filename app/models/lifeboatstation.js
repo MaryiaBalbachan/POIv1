@@ -6,7 +6,7 @@ const Schema = Mongoose.Schema;
 const stationSchema = new Schema({
   name: String,
   location: String,
-  dateopen: Date,
+  year: Number,
   boat: String,
   description: String,
   contributor: {
@@ -15,4 +15,4 @@ const stationSchema = new Schema({
   },
 });
 
-module.exports = Mongoose.model("Station", stationSchema);
+module.exports = Mongoose.model("Lifeboatstation", stationSchema);

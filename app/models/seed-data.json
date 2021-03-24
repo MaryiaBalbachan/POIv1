@@ -1,0 +1,75 @@
+{
+  "users": {
+    "_model": "User",
+    "pat": {
+      "firstName": "Pat",
+      "lastName": "Flynn",
+      "email": "pat@flynn.com",
+      "password": "secret"
+    },
+    "david": {
+      "firstName": "David",
+      "lastName": "Murphy",
+      "email": "david@murphy.com",
+      "password": "secret"
+    },
+    "nicole": {
+      "firstName": "Nicole",
+      "lastName": "Simpson",
+      "email": "nicole@simpson.com",
+      "password": "secret"
+    }
+  },
+  "lifeboatstations": {
+    "_model": "Lifeboatstation",
+    "one": {
+      "name": "Tramore Lifeboat Station",
+      "location": "The Pier, Tramore",
+      "year": 1858,
+      "boat": "ILB",
+      "description": "Boats: 'Tra Mhor' and 'Isabella Purchase'. During its 110-year history the crews have been honoured with 18 awards for gallantry.",
+      "contributor": "->users.nicole"
+    },
+    "two": {
+      "name": "Dunmore East Lifeboat Station",
+      "location": "Dunmore East, co. Waterford",
+      "year": 1884,
+      "boat": "ALB",
+      "description": "Trent class AWL 'Elizabeth and Ronald'. The crew have been awarded sixteen medals, eight Silver and eight Bronze, the last being voted in 1976",
+      "contributor": "->users.david"
+    },
+    "three": {
+      "name": "Baltimore Lifeboat Station",
+      "location": "Baltimore, co.Cork",
+      "year": 1919,
+      "boat": "AWL" ,
+      "description": "AWL 'Alan Massey' and inshore lifeboat 'Alice and Charles' ",
+      "contributor": "->users.pat"
+    },
+    "four": {
+      "name": "Castletownbere lifeboat station",
+      "location": "Castletownbere, co. Cork",
+      "year": 1997,
+      "boat": "AWL",
+      "description": "AWL 'Annette Hutton', class Trent. New pontoon opened in 2013 ",
+      "contributor": "->users.pat"
+    },
+    "five": {
+      "name": "Clifden Lifeboat Station",
+      "location": "Clifden, co. Galway",
+      "year": 1989,
+      "boat": "AWL",
+      "description": "Inshore Atlantic 85 class as well as the newest addition to the fleet a Shannon class lifeboat now operate from Clifden",
+      "contributor": "->users.nicole"
+    },
+    "six": {
+      "name": "Sligo Bay Lifeboat Station",
+      "location": "Sligo Bay, co. Sligo",
+      "year": 1998,
+      "boat": "ILB",
+      "description": "'Sheila and Dennis Tongue' B class inshore lifeboat operates in Sligo Bay",
+      "contributor": "->users.david"
+    }
+
+  }
+}
