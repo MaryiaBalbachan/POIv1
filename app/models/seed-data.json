@@ -20,6 +20,26 @@
       "password": "secret"
     }
   },
+  "categories": {
+    "_model": "Category",
+    "one": {
+      "loc": "South East",
+      "country": "Ireland"
+    },
+    "two": {
+      "loc": "South",
+      "country": "Ireland"
+
+    },
+    "three": {
+      "loc": "West",
+      "country": "Ireland"
+    },
+    "four": {
+      "loc": "North",
+      "country": "Ireland"
+    }
+  },
   "lifeboatstations": {
     "_model": "Lifeboatstation",
     "one": {
@@ -29,6 +49,7 @@
       "boat": "ILB",
       "description": "Boats: 'Tra Mhor' and 'Isabella Purchase'. During its 110-year history the crews have been honoured with 18 awards for gallantry.",
       "contributor": "->users.nicole"
+
     },
     "two": {
       "name": "Dunmore East Lifeboat Station",
@@ -37,6 +58,7 @@
       "boat": "ALB",
       "description": "Trent class AWL 'Elizabeth and Ronald'. The crew have been awarded sixteen medals, eight Silver and eight Bronze, the last being voted in 1976",
       "contributor": "->users.david"
+
     },
     "three": {
       "name": "Baltimore Lifeboat Station",
@@ -45,6 +67,7 @@
       "boat": "AWL" ,
       "description": "AWL 'Alan Massey' and inshore lifeboat 'Alice and Charles' ",
       "contributor": "->users.pat"
+
     },
     "four": {
       "name": "Castletownbere lifeboat station",
@@ -53,6 +76,7 @@
       "boat": "AWL",
       "description": "AWL 'Annette Hutton', class Trent. New pontoon opened in 2013 ",
       "contributor": "->users.pat"
+
     },
     "five": {
       "name": "Clifden Lifeboat Station",
@@ -61,6 +85,7 @@
       "boat": "AWL",
       "description": "Inshore Atlantic 85 class as well as the newest addition to the fleet a Shannon class lifeboat now operate from Clifden",
       "contributor": "->users.nicole"
+
     },
     "six": {
       "name": "Sligo Bay Lifeboat Station",
@@ -69,6 +94,7 @@
       "boat": "ILB",
       "description": "'Sheila and Dennis Tongue' B class inshore lifeboat operates in Sligo Bay",
       "contributor": "->users.david"
+
     }
 
   }

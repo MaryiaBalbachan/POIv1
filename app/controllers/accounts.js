@@ -1,5 +1,6 @@
 "use strict";
 const User = require("../models/user");
+const Boom =require("@hapi/boom");
 const Joi = require("@hapi/joi");
 
 const Accounts = {
@@ -15,7 +16,6 @@ const Accounts = {
       return h.view("signup", { title: "Sign up to View Stations" });
     },
   },
-
   showLogin: {
     auth: false,
     handler: function (request, h) {
@@ -78,6 +78,24 @@ const Accounts = {
 
   login: {
     auth: false,
+    validate: {
+      payload: {
+        email: Joi.string().email().required(),
+        password: Joi.string().required()
+      },
+      options: {
+        abortEarly: false
+      },
+      failAction: function(request, h, error) {
+        return h
+          .view('login', {
+            title: 'Sign in error',
+            errors: error.details
+          })
+          .takeover()
+          .code(400);
+      }
+    },
     handler: async function (request, h) {
       const { email, password } = request.payload;
       try {
@@ -138,7 +156,7 @@ const Accounts = {
         user.email = userEdit.email;
         user.password = userEdit.password;
         await user.save();
-        return h.redirect("/settings");
+        return h.redirect("/home");
       } catch (err) {
         return h.view("main", { errors: [{ message: err.message }] });
       }

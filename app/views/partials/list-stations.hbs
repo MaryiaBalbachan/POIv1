@@ -1,15 +1,16 @@
-<div class="uk-margin uk-width-2xlarge uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
+<div class="uk-card uk-card-default uk-card-body uk-box-shadow-large">
     <table class="uk-table">
-        <caption>
+        <caption class="uk-text-bold uk-text-uppercase uk-text-center" style="color: darkblue">
             Stations Added
         </caption>
-        <thead>
+        <thead >
         <th>Name</th>
         <th>Location</th>
-        <th>Year Opened</th>
+        <th>Year</th>
         <th>Boat Type</th>
         <th>Description</th>
         <th>Contributor</th>
+        <th>Photos</th>
         </thead>
         <tbody class="uk-text-left">
         {{#each lifeboatstations}}
@@ -20,6 +21,7 @@
                 <td>{{boat}}</td>
                 <td>{{description}}</td>
                 <td>{{contributor.firstName}} {{contributor.lastName}}</td>
+                <td></td>
             </tr>
         {{/each}}
         </tbody>
