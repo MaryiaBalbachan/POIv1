@@ -1,0 +1,27 @@
+<div class="uk-margin uk-width-2xlarge uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
+    <table class="uk-table">
+        <caption>
+            Stations Added
+        </caption>
+        <thead>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Year Opened</th>
+        <th>Boat Type</th>
+        <th>Description</th>
+        <th>Contributor</th>
+        </thead>
+        <tbody class="uk-text-left">
+        {{#each lifeboatstations}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{location}}</td>
+                <td>{{dateopen}}</td>
+                <td>{{boat}}</td>
+                <td>{{description}}</td>
+                <td>{{contributor.firstName}} {{contributor.lastName}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>
