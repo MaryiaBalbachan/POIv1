@@ -15,6 +15,8 @@ module.exports = [
   { method: "GET", path: "/list", config: Lifeboatstations.list },
   { method: "POST", path: "/addstation", config: Lifeboatstations.addstation },
   { method: "GET", path: "/deletestation/{_id}", config: Lifeboatstations.deletestation },
+  { method: "POST", path: "/editstation/{_id}", config: Lifeboatstations.editstation },
+  { method: "GET", path: "/editstation/{_id}", config: Lifeboatstations.showstation },
 
   {
     method: "GET",

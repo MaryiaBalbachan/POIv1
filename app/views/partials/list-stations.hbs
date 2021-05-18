@@ -10,7 +10,8 @@
         <th>Boat Type</th>
         <th>Description</th>
         <th>Contributor</th>
-        <th>Photos</th>
+        <th>Update Station</th>
+        <th>Delete Station</th>
         </thead>
         <tbody class="uk-text-left">
         {{#each lifeboatstations}}
@@ -21,7 +22,12 @@
                 <td>{{boat}}</td>
                 <td>{{description}}</td>
                 <td>{{contributor.firstName}} {{contributor.lastName}}</td>
-                <td></td>
+                <td>
+                    <a href="/editstation/{{_id}}" class="uk-card uk-card-small uk-card-hover uk-padding-small" >
+                        <i class=" fas far fa-pencil-alt fa-2x uk-position-relative uk-position-right " style="color: darkblue;" title="Update Information" uk-tooltip>
+                        </i>
+                    </a>
+                </td>
                 <td>
                     <a href="/deletestation/{{_id}}" class="uk-card uk-card-small uk-card-hover uk-padding-small" >
                         <i class=" fas far fa-trash-alt fa-2x uk-position-relative uk-position-right " style="color: darkblue;" title="Delete Station" uk-tooltip>

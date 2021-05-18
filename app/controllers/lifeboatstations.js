@@ -63,12 +63,43 @@ const Lifeboatstations = {
     },
   },
 
-
-  showStation: {
+  editstation: {
+    //validate with joi
     handler: async function (request, h) {
       try {
-        const station = await Lifeboatstation.findOne().populate('contributer').lean();
-        return h.view("updateStation", { title: "Update Station", lifeboatstation: lifeboatstation });
+        const stationEdit = request.payload;
+        const id = request.auth.credentials.id;
+        const lifeboatstation = await Lifeboatstation.findById(id);
+        lifeboatstation.name = stationEdit.name;
+        lifeboatstation.location = stationEdit.location;
+        lifeboatstation.year = stationEdit.year;
+        lifeboatstation.boat = stationEdit.boat;
+        lifeboatstation.description = stationEdit.description,
+        await lifeboatstation.save();
+        return h.redirect("/list");
+      } catch (err) {
+        return h.view("main", { errors: [{ message: err.message }] });
+      }
+    },
+  },
+
+  showstation: {
+    handler: async function (request, h) {
+      try {
+        const id = request.params._id
+        const lifeboatstation = await Lifeboatstation.findById(id).lean()
+        return h.view("editstation", { title: "Update Station", lifeboatstation: lifeboatstation });
+      } catch (err) {
+        return h.view("login", { errors: [{ message: err.message }] });
+      }
+    },
+  },
+  showSettings: {
+    handler: async function (request, h) {
+      try {
+        const id = request.auth.credentials.id;
+        const user = await User.findById(id).lean();
+        return h.view("settings", { title: "Account Settings", user: user });
       } catch (err) {
         return h.view("login", { errors: [{ message: err.message }] });
       }
