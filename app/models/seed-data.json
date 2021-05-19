@@ -5,19 +5,19 @@
       "firstName": "Pat",
       "lastName": "Flynn",
       "email": "pat@flynn.com",
-      "password": "secret"
+      "password": "$2a$10$HnapEWWKQQ0.0Ft33…wYswEzT4C.6Ul5y6cOU.UEa"
     },
     "david": {
       "firstName": "David",
       "lastName": "Murphy",
       "email": "david@murphy.com",
-      "password": "secret"
+      "password": "$2a$10$D3TWK8MSAh63Lhk4gIFSJ.ekM368J88qJRUYSbuBfzffex6B0dFwK"
     },
     "nicole": {
       "firstName": "Nicole",
       "lastName": "Simpson",
       "email": "nicole@simpson.com",
-      "password": "secret"
+      "password": "$2a$10$uqnPlgyVjBEOtcgMhn/WRO3FwW4T9gX36tTB4RqpGeB/LkCR3YQuO"
     }
   },
   "categories": {
