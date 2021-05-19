@@ -151,13 +151,14 @@ const Accounts = {
     },
     handler: async function (request, h) {
       try {
+        const hash = await bcrypt.hash(payload.password, saltRounds);
         const userEdit = request.payload;
         const id = request.auth.credentials.id;
         const user = await User.findById(id);
         user.firstName = userEdit.firstName;
         user.lastName = userEdit.lastName;
         user.email = userEdit.email;
-        user.password = userEdit.password;
+        user.password = hash;
         await user.save();
         return h.redirect("/home");
       } catch (err) {
