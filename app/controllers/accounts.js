@@ -29,10 +29,10 @@ const Accounts = {
     auth: false,
     validate: {
       payload: {
-        firstName: Joi.string().required(),
-        lastName: Joi.string().required(),
+        firstName: Joi.string().alphanum().min(1).max(30).required(),
+        lastName: Joi.string().alphanum().min(2).max(30).required(),
         email: Joi.string().email().required(),
-        password: Joi.string().required(),
+        password: Joi.string().pattern(/^[a-zA-Z0-9]{6,15}$/).required(),
       },
       options: {
         abortEarly: false,
@@ -84,7 +84,7 @@ const Accounts = {
     validate: {
       payload: {
         email: Joi.string().email().required(),
-        password: Joi.string().required()
+        password: Joi.string().pattern(/^[a-zA-Z0-9]{6,15}$/).required()
       },
       options: {
         abortEarly: false
@@ -131,10 +131,10 @@ const Accounts = {
   updateSettings: {
     validate: {
       payload: {
-        firstName: Joi.string().required(),
-        lastName: Joi.string().required(),
+        firstName: Joi.string().alphanum().min(1).max(30).required(),
+        lastName: Joi.string().alphanum().min(2).max(30).required(),
         email: Joi.string().email().required(),
-        password: Joi.string().required(),
+        password: Joi.string().pattern(/^[a-zA-Z0-9]{6,15}$/).required(),
       },
       options: {
         abortEarly: false,
