@@ -4,6 +4,7 @@ const Boom =require("@hapi/boom");
 const Joi = require("@hapi/joi");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
+const sanitizeHtml = require('sanitize-html');
 
 const Accounts = {
   index: {
@@ -108,6 +109,7 @@ const Accounts = {
           throw Boom.unauthorized(message);
         }
         await user.comparePassword(password);
+
         request.cookieAuth.set({ id: user.id });
         return h.redirect("/home");
       } catch (err) {
@@ -151,8 +153,9 @@ const Accounts = {
     },
     handler: async function (request, h) {
       try {
-        const hash = await bcrypt.hash(payload.password, saltRounds);
         const userEdit = request.payload;
+        console.log(userEdit);
+        const hash = await bcrypt.hash(userEdit.password, saltRounds);
         const id = request.auth.credentials.id;
         const user = await User.findById(id);
         user.firstName = userEdit.firstName;

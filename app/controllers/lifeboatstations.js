@@ -2,7 +2,7 @@
 const Lifeboatstation = require("../models/lifeboatstation");
 const User = require("../models/user");
 const Category = require("../models/category");
-const Joi = require("@hapi/joi");
+const sanitizeHtml = require('sanitize-html');
 
 const Lifeboatstations = {
   home: {
@@ -23,27 +23,27 @@ const Lifeboatstations = {
   },
 
   addstation: {
-    validate: {
-      payload: {
-        name: Joi.string().alphanum().min(1).max(30).required(),
-        location: Joi.string().alphanum().min(1).max(30).required(),
-        year: Joi.number().integer().min(1785).max(2021).required(),
-        boat: Joi.string().alphanum().min(14).max(25).required(),
-        description: Joi.string().alphanum().min(1).max(250).required(),
-      },
-      options: {
-        abortEarly: false,
-      },
-      failAction: function (request, h, error) {
-        return h
-          .view("list", {
-            title: "Adding station was unsuccessful",
-            errors: error.details,
-          })
-          .takeover()
-          .code(400);
-      },
-    },
+ //   validate: {
+   //   payload: {
+   //     name: Joi.string().alphanum().min(1).max(30).required(),
+   //     location: Joi.string().alphanum().min(1).max(30).required(),
+   //     year: Joi.number().integer().min(1785).max(2021).required(),
+   //     boat: Joi.string().alphanum().min(14).max(25).required(),
+    //    description: Joi.string().alphanum().min(1).max(250).required(),
+  //    },
+  //    options: {
+  //      abortEarly: false,
+  //    },
+  //    failAction: function (request, h, error) {
+  //      return h
+   //       .view("list", {
+   //         title: "Adding station was unsuccessful",
+   //         errors: error.details,
+   //       })
+  //        .takeover()
+  //        .code(400);
+    //  },
+  //  },
     handler: async function (request, h) {
       try {
         const id = request.auth.credentials.id;
@@ -53,9 +53,8 @@ const Lifeboatstations = {
         //const category = await Category.findOne({
         //  loc: rawCategory,
         // });
-
         const newStation = new Lifeboatstation({
-          name: data.name,
+          name: sanitizeHtml(data.name),
           location: data.location,
           year: data.year,
           boat: data.boat,
