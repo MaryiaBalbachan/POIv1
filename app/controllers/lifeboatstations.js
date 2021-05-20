@@ -1,6 +1,7 @@
 "use strict";
 const Lifeboatstation = require("../models/lifeboatstation");
 const User = require("../models/user");
+const Joi = require("@hapi/joi");
 const Category = require("../models/category");
 const sanitizeHtml = require('sanitize-html');
 
@@ -23,45 +24,49 @@ const Lifeboatstations = {
   },
 
   addstation: {
- //   validate: {
-   //   payload: {
-   //     name: Joi.string().alphanum().min(1).max(30).required(),
-   //     location: Joi.string().alphanum().min(1).max(30).required(),
-   //     year: Joi.number().integer().min(1785).max(2021).required(),
-   //     boat: Joi.string().alphanum().min(14).max(25).required(),
-    //    description: Joi.string().alphanum().min(1).max(250).required(),
-  //    },
-  //    options: {
-  //      abortEarly: false,
-  //    },
-  //    failAction: function (request, h, error) {
-  //      return h
-   //       .view("list", {
-   //         title: "Adding station was unsuccessful",
-   //         errors: error.details,
-   //       })
-  //        .takeover()
-  //        .code(400);
-    //  },
-  //  },
+    validate: {
+      payload: {
+        name: Joi.string().regex(/^[a-zA-Z0-9\s'-]{3,30}$/),
+        location: Joi.string().regex(/^[a-zA-Z0-9\s'-]{3,30}$/),
+        year: Joi.number().integer().min(1785).max(2021).required(),
+        boat: Joi.string().regex(/^[a-zA-Z0-9\s'-]{3,30}$/),
+        description: Joi.string().regex(/^[a-zA-Z0-9\s'-]{10,250}$/),
+      },
+      options: {
+        abortEarly: false,
+      },
+      failAction: function (request, h, error) {
+        return h
+          .view("list", {
+            title: "Adding station was unsuccessful",
+            errors: error.details,
+          })
+          .takeover()
+          .code(400);
+      },
+    },
     handler: async function (request, h) {
       try {
         const id = request.auth.credentials.id;
+        console.log(id);
         const user = await User.findById(id);
+        console.log(user);
         const data = request.payload;
+        console.log(data);
         //const rawCategory = request.payload.category.split(",");
         //const category = await Category.findOne({
         //  loc: rawCategory,
         // });
         const newStation = new Lifeboatstation({
           name: sanitizeHtml(data.name),
-          location: data.location,
+          location: sanitizeHtml(data.location),
           year: data.year,
-          boat: data.boat,
-          description: data.description,
+          boat: sanitizeHtml(data.boat),
+          description: sanitizeHtml(data.description),
           contributor: user._id,
           // category: category._id,
         });
+        console.log(newStation);
         await newStation.save();
         return h.redirect("/list");
       } catch (err) {
@@ -85,7 +90,28 @@ const Lifeboatstations = {
   },
 
   editstation: {
-    //validate with joi
+    validate: {
+      payload: {
+        name: Joi.string().regex(/^[a-zA-Z0-9\s'-]{3,30}$/),
+        location: Joi.string().regex(/^[a-zA-Z0-9\s'-]{3,30}$/),
+        year: Joi.number().integer().min(1785).max(2021).required(),
+        boat: Joi.string().regex(/^[a-zA-Z0-9\s'-]{3,30}$/),
+        description: Joi.string().regex(/^[a-zA-Z0-9\s'-]{10,250}$/),
+      },
+      options: {
+        abortEarly: false,
+      },
+      failAction: function (request, h, error) {
+        return h
+          .view("list", {
+            title: "Adding station was unsuccessful",
+            errors: error.details,
+          })
+          .takeover()
+          .code(400);
+      },
+    },
+
     handler: async function (request, h) {
       try {
         const stationEdit = request.payload;
