@@ -11,6 +11,8 @@ module.exports = [
   { method: "GET", path: "/settings", config: Accounts.showSettings },
   { method: "POST", path: "/settings", config: Accounts.updateSettings },
 
+
+
   { method: "GET", path: "/home", config: Lifeboatstations.home },
   { method: "GET", path: "/list", config: Lifeboatstations.list },
   { method: "POST", path: "/addstation", config: Lifeboatstations.addstation },

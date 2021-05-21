@@ -1,23 +1,23 @@
 <div class="uk-margin uk-width-2xlarge uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
     <form class="uk-form-stacked uk-text-left" action="/editstation/{{lifeboatstation._id}}" method="POST">
         <div class="uk-grid uk-grid-stack">
-            <div class="uk-width-1-2@m">
+            <div class="uk-width-1-1@m">
                 <div class="uk-margin">
                     <label class="uk-form-label" for="form-stacked-text">Enter Station Name</label>
                     <div class="uk-form-controls">
-                        <input class="uk-input" id="form-stacked-text" type="text" name="name" placeholder="Station Name" />
+                        <input class="uk-input" id="form-stacked-text" type="text" name="name" value="{{lifeboatstation.name}}" />
                     </div>
                 </div>
                 <div class="uk-margin">
                     <label class="uk-form-label" for="form-stacked-text">Enter Station Location</label>
                     <div class="uk-form-controls">
-                        <input class="uk-input" id="form-stacked-text" type="text" name="location" placeholder="Station Location" />
+                        <input class="uk-input" id="form-stacked-text" type="text" name="location" value="{{lifeboatstation.location}}" />
                     </div>
                 </div>
                 <div class="uk-margin">
                     <label class="uk-form-label" for="form-stacked-text">Enter the year the Station opened</label>
                     <div class="uk-form-controls">
-                        <input class="uk-input" id="form-stacked-text" type="number" name="year" placeholder="Year" />
+                        <input class="uk-input" id="form-stacked-text" type="number" name="year" value="{{lifeboatstation.year}}" />
                     </div>
                 </div>
                 <div class="uk-margin">
@@ -28,15 +28,21 @@
                     </div>
                 </div>
                 <div class="uk-margin">
+                    <h4>
+                        Current Description
+                    </h4>
+                    <p>
+                        {{lifeboatstation.description}}
+                    </p>
                     <label class="uk-form-label" for="form-stacked-text">Enter a brief description</label>
                     <div class="uk-form-controls">
-                        <input class="uk-input" id="form-stacked-text" type="text" name="description" placeholder="Description" />
+                        <input class="uk-input" id="form-stacked-text" type="text" name="description" value="{{lifeboatstation.description}}" />
                     </div>
                 </div>
 
-                <div class=" uk-width-1-2@m">
+                <div class=" uk-width-1-1@m">
                     <div class="uk-margin">
-                        <button class="submit uk-button uk-button-primary uk-button-large uk-width-1-1">Submit</button>
+                        <button class="submit uk-button uk-button-primary uk-button-large uk-width-1-1">Update Station Details</button>
                     </div>
                 </div>
             </div>

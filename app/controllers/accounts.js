@@ -169,6 +169,21 @@ const Accounts = {
       }
     },
   },
+
+
+  deleteuser: {
+    handler: async function (request, h) {
+      try {
+        const user = User.findById(request.params._id);
+        console.log("deleting user account: " + user);
+        await user.deleteOne();
+        return h.redirect("/");
+      } catch
+        (err) {
+        return h.view('/', {errors: [{message: err.message}]});
+      }
+    },
+  },
 };
 
 module.exports = Accounts;
