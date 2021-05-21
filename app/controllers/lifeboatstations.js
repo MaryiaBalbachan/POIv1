@@ -102,7 +102,7 @@ const Lifeboatstations = {
   },
 
   editstation: {
-   /* validate: {
+    validate: {
       payload: {
         name: Joi.string().regex(/^[a-zA-Z0-9\s'-]{3,30}$/),
         location: Joi.string().regex(/^[a-zA-Z0-9\s'-]{3,30}$/),
@@ -123,7 +123,7 @@ const Lifeboatstations = {
           .code(400);
       },
     },
-*/
+
     handler: async function (request, h) {
       try {
         const stationEdit = request.payload;
