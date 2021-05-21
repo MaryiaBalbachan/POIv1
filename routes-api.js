@@ -13,8 +13,10 @@ module.exports = [
 
 
   { method: "GET", path: "/api/lifeboatstations", config: Lifeboatstations.findAll },
+  { method: "GET", path: "/api/lifeboatstations/{id}", config: Lifeboatstations.findOne },
   { method: "GET", path: "/api/users/{id}/lifeboatstations", config: Lifeboatstations.findByContributor},
   { method: "POST", path: "/api/lifeboatstations", config: Lifeboatstations.addStation },
   { method: "DELETE", path: "/api/lifeboatstations", config: Lifeboatstations.deleteAll },
+  { method: "DELETE", path: "/api/lifeboatstations/{id}", config: Lifeboatstations.deleteOne },
 
 ];

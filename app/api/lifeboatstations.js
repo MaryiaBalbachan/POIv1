@@ -22,11 +22,10 @@ const Lifeboatstations = {
         }
         return lifeboatstation;
       } catch (err) {
-        return Boom.notFound("No User with this id");
+        return Boom.notFound("No Station with this id");
       }
     },
   },
-
 
   findByContributor: {
     auth: false,
@@ -36,7 +35,7 @@ const Lifeboatstations = {
     },
   },
 
-  /*addStation: {
+  addStation: {
     auth: false,
     handler: async function (request, h) {
       const newLifeboatstation = new Lifeboatstation(request.payload);
@@ -46,9 +45,9 @@ const Lifeboatstations = {
       }
       return Boom.badImplementation("error adding station");
     },
-  },*/
+  },
 
-  addStation: {
+  /*addStation: {
     auth: false,
     handler: async function (request, h) {
       let lifeboatstation = new Lifeboatstation(request.payload);
@@ -60,15 +59,13 @@ const Lifeboatstations = {
       lifeboatstation = await lifeboatstation.save();
       return lifeboatstation;
     },
-  },
-
-
+  },*/
 
 
   deleteOne: {
     auth: false,
     handler: async function (request, h) {
-      const lifeboatstation = await Lifeboatstation.deleteOne({ _id: request.params.id });
+      const lifeboatstation = await Lifeboatstation.remove({ _id: request.params.id });
       if (lifeboatstation.deletedCount == 1) {
         return { success: true };
       }
@@ -79,7 +76,7 @@ const Lifeboatstations = {
   deleteAll: {
       auth: false,
       handler: async function (request, h) {
-        await Lifeboatstation.deleteMany({});
+        await Lifeboatstation.remove({});
         return { success: true };
       },
     },

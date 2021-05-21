@@ -30,8 +30,8 @@ const Accounts = {
     auth: false,
     validate: {
       payload: {
-        firstName: Joi.string().alphanum().min(1).max(30).required(),
-        lastName: Joi.string().alphanum().min(2).max(30).required(),
+        firstName: Joi.string().regex(/^[a-zA-Z\s'-]{3,15}$/),
+        lastName: Joi.string().regex(/^[a-zA-Z\s'-]{3,30}$/),
         email: Joi.string().email().required(),
         password: Joi.string().pattern(/^[a-zA-Z0-9]{6,15}$/).required(),
       },
@@ -58,9 +58,9 @@ const Accounts = {
         }
         const hash = await bcrypt.hash(payload.password, saltRounds);
         const newUser = new User({
-          firstName: payload.firstName,
-          lastName: payload.lastName,
-          email: payload.email,
+          firstName: sanitizeHtml(payload.firstName),
+          lastName: sanitizeHtml(payload.lastName),
+          email: sanitizeHtml(payload.email),
           password: hash,
         });
         user = await newUser.save();
@@ -133,8 +133,8 @@ const Accounts = {
   updateSettings: {
     validate: {
       payload: {
-        firstName: Joi.string().alphanum().min(1).max(30).required(),
-        lastName: Joi.string().alphanum().min(2).max(30).required(),
+        firstName: Joi.string().regex(/^[a-zA-Z\s'-]{3,15}$/),
+        lastName: Joi.string().regex(/^[a-zA-Z\s'-]{3,30}$/),
         email: Joi.string().email().required(),
         password: Joi.string().pattern(/^[a-zA-Z0-9]{6,15}$/).required(),
       },
@@ -158,9 +158,9 @@ const Accounts = {
         const hash = await bcrypt.hash(userEdit.password, saltRounds);
         const id = request.auth.credentials.id;
         const user = await User.findById(id);
-        user.firstName = userEdit.firstName;
-        user.lastName = userEdit.lastName;
-        user.email = userEdit.email;
+        user.firstName = sanitizeHtml(userEdit.firstName);
+        user.lastName = sanitizeHtml(userEdit.lastName);
+        user.email = sanitizeHtml(userEdit.email);
         user.password = hash;
         await user.save();
         return h.redirect("/home");
