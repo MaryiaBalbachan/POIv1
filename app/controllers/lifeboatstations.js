@@ -26,11 +26,11 @@ const Lifeboatstations = {
   addstation: {
     validate: {
       payload: {
-        name: Joi.string().regex(/^[a-zA-Z0-9\s'-]{3,30}$/),
-        location: Joi.string().regex(/^[a-zA-Z0-9\s'-]{3,30}$/),
+        name: Joi.string().regex(/^[a-zA-Z0-9\s'-,.]{3,30}$/),
+        location: Joi.string().regex(/^[a-zA-Z0-9\s'-,.]{3,30}$/),
         year: Joi.number().integer().min(1785).max(2021).required(),
         boat: Joi.string().regex(/^[a-zA-Z0-9\s'-]{3,30}$/),
-        description: Joi.string().regex(/^[a-zA-Z0-9\s'-]{10,250}$/),
+        description: Joi.string().regex(/^[a-zA-Z0-9\s'-,.]{10,250}$/),
       },
       options: {
         abortEarly: false,
@@ -104,11 +104,11 @@ const Lifeboatstations = {
   editstation: {
     validate: {
       payload: {
-        name: Joi.string().regex(/^[a-zA-Z0-9\s'-]{3,30}$/),
-        location: Joi.string().regex(/^[a-zA-Z0-9\s'-]{3,30}$/),
+        name: Joi.string().regex(/^[a-zA-Z0-9\s'-,.]{3,30}$/),
+        location: Joi.string().regex(/^[a-zA-Z0-9\s'-,.]{3,30}$/),
         year: Joi.number().integer().min(1785).max(2021).required(),
         boat: Joi.string().regex(/^[a-zA-Z0-9\s'-]{3,30}$/),
-        description: Joi.string().regex(/^[a-zA-Z0-9\s'-]{10,250}$/),
+        description: Joi.string().regex(/^[a-zA-Z0-9\s'-,.]{10,250}$/),
       },
       options: {
         abortEarly: false,
